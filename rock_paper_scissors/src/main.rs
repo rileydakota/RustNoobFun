@@ -11,6 +11,8 @@ enum Winner {
 
 const CHOICES: &'static [&str] = &["rock", "paper", "scissors"];
 
+
+
 fn determine_winner(player_choice: &str, comp_choice: &str) -> Winner {
     if player_choice == "rock" && comp_choice == "scissors" {
         Winner::Human
@@ -34,8 +36,7 @@ fn determine_winner(player_choice: &str, comp_choice: &str) -> Winner {
 }
 
 fn clean_input(input: String) -> String {
-    let new_string = input.trim().to_lowercase();
-    new_string
+    input.trim().to_lowercase()
 }
 
 fn is_valid_input(input: &str) -> bool {
