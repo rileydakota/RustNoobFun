@@ -1,0 +1,1 @@
+Just a repo containing the various toy apps I build out to better my knowledge of Rust! 
