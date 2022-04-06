@@ -14,24 +14,18 @@ const CHOICES: &'static [&str] = &["rock", "paper", "scissors"];
 
 
 fn determine_winner(player_choice: &str, comp_choice: &str) -> Winner {
-    if player_choice == "rock" && comp_choice == "scissors" {
-        Winner::Human
-    } else if player_choice == "rock" && comp_choice == "paper" {
-        Winner::Computer
-    } else if player_choice == "rock" && comp_choice == "rock" {
-        Winner::Draw
-    } else if player_choice == "paper" && comp_choice == "paper" {
-        Winner::Draw
-    } else if player_choice == "paper" && comp_choice == "scissors" {
-        Winner::Computer
-    } else if player_choice == "paper" && comp_choice == "rock" {
-        Winner::Human
-    } else if player_choice == "scissors" && comp_choice == "scissors" {
-        Winner::Draw
-    } else if player_choice == "scissors" && comp_choice == "paper" {
-        Winner::Human
-    } else {
-        Winner::Computer
+
+    let choices = (player_choice, comp_choice);
+
+    match choices {
+      ("rock", "scissors") => Winner::Human,
+      ("rock", "paper") => Winner::Computer,
+      ("paper", "rock") => Winner::Human,
+      ("paper", "scissors") => Winner::Computer,
+      ("scissors", "paper") => Winner::Human,
+      ("scissors", "rock") => Winner::Computer,
+      (player, comp) if player == comp => Winner::Draw,
+      _ => panic!()
     }
 }
 
