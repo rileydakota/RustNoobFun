@@ -11,21 +11,18 @@ enum Winner {
 
 const CHOICES: &'static [&str] = &["rock", "paper", "scissors"];
 
-
-
 fn determine_winner(player_choice: &str, comp_choice: &str) -> Winner {
-
     let choices = (player_choice, comp_choice);
 
     match choices {
-      ("rock", "scissors") => Winner::Human,
-      ("rock", "paper") => Winner::Computer,
-      ("paper", "rock") => Winner::Human,
-      ("paper", "scissors") => Winner::Computer,
-      ("scissors", "paper") => Winner::Human,
-      ("scissors", "rock") => Winner::Computer,
-      (player, comp) if player == comp => Winner::Draw,
-      _ => panic!()
+        ("rock", "scissors") => Winner::Human,
+        ("rock", "paper") => Winner::Computer,
+        ("paper", "rock") => Winner::Human,
+        ("paper", "scissors") => Winner::Computer,
+        ("scissors", "paper") => Winner::Human,
+        ("scissors", "rock") => Winner::Computer,
+        (player, comp) if player == comp => Winner::Draw,
+        _ => panic!(),
     }
 }
 
