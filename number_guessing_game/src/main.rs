@@ -1,4 +1,5 @@
 use rand::Rng;
+use std::cmp::Ordering;
 use std::io;
 
 const MAX_RAND: i8 = 20;
@@ -19,14 +20,13 @@ fn main() {
 
         let player_number_answer: i8 = player_answer.trim().parse().unwrap();
 
-        match player_number_answer {
-            a if a == answer => {
+        match player_number_answer.cmp(&answer) {
+            Ordering::Equal => {
                 println!("Correct! You win!");
                 break;
             }
-            a if a > answer => println!("Wrong! {} is too high!", a),
-            a if a < answer => println!("Wrong! {} is too low!", a),
-            _ => panic!("unknown error, exiting"),
+            Ordering::Greater => println!("Wrong! {} is too high!", player_number_answer),
+            Ordering::Less => println!("Wrong! {} is too low!", player_number_answer),
         }
     }
 }
