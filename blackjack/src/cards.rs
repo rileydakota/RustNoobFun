@@ -1,10 +1,7 @@
 use rand::seq::SliceRandom;
 use rand::thread_rng;
 
-pub enum PlayerAction {
-    Hit,
-    Stand,
-}
+
 
 pub enum Card {
     Two,
@@ -27,9 +24,9 @@ pub struct Deck {
 }
 
 impl Deck {
-    fn new(num_decks: i8) -> Deck {
+    pub fn new(num_decks: i8) -> Deck {
         let mut deck = Deck { cards: vec![] };
-
+        
         for x in 0..num_decks {
             for i in 0..4 {
                 deck.cards.push(Card::Two);
@@ -51,16 +48,16 @@ impl Deck {
         deck
     }
 
-    fn shuffle(&mut self) {
+    pub fn shuffle(&mut self) {
         self.cards.shuffle(&mut thread_rng())
     }
 
-    fn draw(&mut self) -> Card {
+    pub fn draw(&mut self) -> Card {
       self.cards.pop().unwrap()
     }
 }
 
-pub fn to_val(card: Card) -> i8 {
+pub fn to_val(card: &Card) -> i8 {
     match card {
         Card::Two => 2,
         Card::Three => 3,
@@ -74,7 +71,7 @@ pub fn to_val(card: Card) -> i8 {
         Card::Jack => 10,
         Card::Queen => 10,
         Card::King => 10,
-        Card::Ace => 12,
+        Card::Ace => 11,
     }
 }
 
@@ -90,6 +87,3 @@ fn check_deck_new() {
 
 #[test]
 fn check_deck_shuffle() {}
-
-#[test]
-fn check_deck_draw() {}
