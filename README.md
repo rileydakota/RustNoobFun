@@ -6,5 +6,5 @@ Ideas for toy apps:
 2. Guess the Number! DONE!
 3. Turn based RPG fight! IDEA
 4. Blackjack/21! WIP!
-5. Simple CRUD API! IDEA
+5. Simple REST API! IDEA
 6. Simple C2 Agent! IDEA

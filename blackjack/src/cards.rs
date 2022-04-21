@@ -1,8 +1,6 @@
 use rand::seq::SliceRandom;
 use rand::thread_rng;
 
-
-
 pub enum Card {
     Two,
     Three,
@@ -26,7 +24,7 @@ pub struct Deck {
 impl Deck {
     pub fn new(num_decks: i8) -> Deck {
         let mut deck = Deck { cards: vec![] };
-        
+
         for x in 0..num_decks {
             for i in 0..4 {
                 deck.cards.push(Card::Two);
@@ -53,7 +51,7 @@ impl Deck {
     }
 
     pub fn draw(&mut self) -> Card {
-      self.cards.pop().unwrap()
+        self.cards.pop().unwrap()
     }
 }
 
@@ -74,7 +72,6 @@ pub fn to_val(card: &Card) -> i8 {
         Card::Ace => 11,
     }
 }
-
 
 #[test]
 fn check_deck_new() {
