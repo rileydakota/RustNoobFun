@@ -6,7 +6,6 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-rusoto_core = "0.48.0"
-rusoto_iam = "0.48.0"
-tokio = "1.18.0"
-
+tokio = { version = "1.18.0", features = ["full"]}
+aws-sdk-iam = "0.10.1"
+"aws-config" = "0.10.1"

@@ -1,20 +1,20 @@
-use rusoto_core::{Region};
-use rusoto_iam::{IamClient, Iam, ListRolesRequest, ListRolesResponse};
-use tokio;
+use aws_config;
+use aws_sdk_iam;
 
 #[tokio::main]
 async fn main() {
-    let client = IamClient::new(Region::UsEast1);
-    let list_roles_input = Default::default();
-    let results = client.list_roles(list_roles_input).await.unwrap();
-    
-    match results.is_truncated {
-        Some(x) => println!("Response Truncated: {}", x),
-        None => println!("Response not truncated")
-    };
+    let config = aws_config::load_from_env().await;
+    let client = aws_sdk_iam::Client::new(&config);
+    //let list_roles_input = Default::default();
+    //let results = client.list_roles(list_roles_input).await.unwrap();
+    let results = client.list_roles().send().await.unwrap();
+    let roles = results.roles.unwrap();
 
-    for role in results.roles {
-        println!("{}", role.arn)
+    for role in roles {
+        match role.role_name {
+            Some(x) => println!("{}", x),
+            None => panic!()
+        }
     }
     }
 
