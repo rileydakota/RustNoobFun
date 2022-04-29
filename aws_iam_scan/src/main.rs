@@ -13,8 +13,7 @@ async fn main() {
     for role in roles {
         match role.role_name {
             Some(x) => println!("{}", x),
-            None => panic!()
+            None => panic!(),
         }
     }
-    }
-
+}
